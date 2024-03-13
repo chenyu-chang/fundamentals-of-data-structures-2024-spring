@@ -1,0 +1,33 @@
+Question:
+Create a linked list where the node data is sequentially ordered from 1 to 6. Then, insert a new node with the data value of 9 before the node containing the data value of 4.
+
+Reference Solution:
+// Define the Node structure
+Define Node:
+    Initialize with data and a pointer to the next node (data, next)
+
+// Initialize the linked list with nodes 1 to 6
+head = NULL
+tail = NULL // 'tail' clearly indicates this will always point to the last node
+
+for i from 1 to 6:
+    newNode = create Node with value i
+    if head is NULL:
+        head = newNode
+        tail = newNode // First node becomes the head and the tail
+    else:
+        tail.next = newNode // Append new node at the end
+        tail = newNode // Update 'tail' to the new last node
+
+// Insert a new node with value 9 before the node with value 4
+newNode = create Node with value 9
+current = head
+
+while current.next is not NULL and current.next.data is not 4:
+    current = current.next
+
+if current is not NULL:
+    newNode.next = current.next
+    current.next = newNode
+
+// After insertion, the list is 1 -> 2 -> 3 -> 9 -> 4 -> 5 -> 6
